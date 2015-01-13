@@ -4,17 +4,34 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Button;
+
+import java.util.Date;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    int i = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
+    public void buttonSendsMessage(View view) {
+        // Declaration: text widget
+        TextView wText;
+        // Declaration: button, from the view
+        Button wButton = (Button)view;
+        // Search button in layout
+        wText=(TextView)findViewById(R.id.moj_text_view_id);
+        // Change text widget's string
+        wText.setText(new Date().toString() + " button text: " + wButton.getText().toString() + " counter: " + i++);
 
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
