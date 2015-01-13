@@ -4,7 +4,8 @@
     <string name="app_name">Widgets</string>
     <string name="action_settings">Settings</string>
     <string name="str_text_view">Str Hello world!</string>
-    <string name="str_button">Butt</string>
+    <string name="str_button">Check items</string>
     <string name="str_button_descr">pokec</string>
-
+    <string name="str_check_box">check box</string>
+    <string name="str_switch">switch</string>
 </resources>
