@@ -29,7 +29,19 @@ public class MainActivity extends ActionBarActivity {
         // Search button in layout
         wText=(TextView)findViewById(R.id.moj_text_view_id);
         // Change text widget's string
-        wText.setText(new Date().toString() + " button text: " + wButton.getText().toString() + " counter: " + i++);
+        wText.setText(new Date().toString() + "\nbutton text: " + wButton.getText().toString() + "\ncounter: " + i++);
+
+    }
+
+    public void buttonSendsMessage2(View view) {
+        // Declaration: text widget
+        TextView wText;
+        // Declaration: button, from the view
+        //Button wButton = (Button)view;
+        // Search button in layout
+        wText=(TextView)findViewById(R.id.moj_text_view_id);
+        // Change text widget's string
+        wText.setText(new Date().toString() + "\nbutton text: "+ "\ncounter: " + i++);
 
     }
     @Override
