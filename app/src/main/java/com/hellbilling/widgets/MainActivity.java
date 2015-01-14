@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ public class MainActivity extends ActionBarActivity implements
 
     int i = 0;
     CheckBox wCheckBoxMoj;
+    Switch wSwitchMoj;
+    String radioStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,14 @@ public class MainActivity extends ActionBarActivity implements
         setContentView(R.layout.activity_main);
 
         // we vant to monitor status of the check box
-        // Swutch supports the same behavior
         wCheckBoxMoj=(CheckBox)findViewById(R.id.moj_check_box_id);
+        // default checked
+        wCheckBoxMoj.setChecked(true);
         wCheckBoxMoj.setOnCheckedChangeListener(this);
+
+        // we vant to monitor status of the switch
+        wSwitchMoj=(Switch)findViewById(R.id.moj_switch_id);
+        wSwitchMoj.setOnCheckedChangeListener(this);
 
     }
 
@@ -42,7 +50,8 @@ public class MainActivity extends ActionBarActivity implements
         EditText wEditText=(EditText)findViewById(R.id.moj_edit_text_id);
         wCheckBoxMoj=(CheckBox)findViewById(R.id.moj_check_box_id);
         Switch wSwitch=(Switch)findViewById(R.id.moj_switch_id);
-        RadioGroup wRadioGroup=(RadioGroup)findViewById(R.id.moj_redio_group_id);
+        RadioGroup wRadioGroup=(RadioGroup)findViewById(R.id.moj_radio_group_id);
+
         // Change text widget's string
         wText.setText(
             new Date().toString() + "\n" +
@@ -51,17 +60,47 @@ public class MainActivity extends ActionBarActivity implements
             "editovany text: " + wEditText.getText() + "\n" +
             "check box status: " + wCheckBoxMoj.isChecked() + "\n" +
             "switch status: " + wSwitch.isChecked() + "\n" +
-            "radio status: " + wRadioGroup.getCheckedRadioButtonId() + "\n" +
+            "radio id: " + wRadioGroup.getCheckedRadioButtonId() + "\n" +
+            "radio status: "+ radioStatus + "\n" +
             "");
 
     }
 
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radioButton1:
+                if (checked)
+                    radioStatus = "First radio";
+                    break;
+            case R.id.radioButton2:
+                if (checked)
+                    radioStatus = "Second radio";
+                    break;
+            case R.id.radioButton3:
+                if (checked)
+                    radioStatus = "Third radio";
+                    break;
+        }
+    }
+     // PAKO, prepina to oba widgety naraz, ako to
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+
         if(isChecked){
             wCheckBoxMoj.setText("check box checked");
         }
         else {
             wCheckBoxMoj.setText("check box NOT checked");
+        }
+        if(isChecked){
+            wSwitchMoj.setText("switch checked");
+        }
+        else {
+            wSwitchMoj.setText("switch NOT checked");
         }
     }
     public void buttonSendsMessage2(View view) {
