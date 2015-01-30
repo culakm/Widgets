@@ -90,17 +90,22 @@ public class MainActivity extends ActionBarActivity implements
      // PAKO, prepina to oba widgety naraz, ako to
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
-        if(isChecked){
-            wCheckBoxMoj.setText("check box checked");
-        }
-        else {
-            wCheckBoxMoj.setText("check box NOT checked");
-        }
-        if(isChecked){
-            wSwitchMoj.setText("switch checked");
-        }
-        else {
-            wSwitchMoj.setText("switch NOT checked");
+        // same onCheckedChanged for for check box and switch, id of wanted widget has to be find
+        switch (buttonView.getId()) {
+            case R.id.moj_check_box_id:
+                if (isChecked) {
+                    wCheckBoxMoj.setText("check box checked id: -- " + buttonView.getId() + " --");
+                } else {
+                    wCheckBoxMoj.setText("check box NOT checked");
+                }
+            break;
+            case R.id.moj_switch_id:
+                if (isChecked) {
+                    wSwitchMoj.setText("switch checked id: -- " + buttonView.getId() + " --");
+                } else {
+                    wSwitchMoj.setText("switch NOT checked");
+                }
+            break;
         }
     }
     public void buttonSendsMessage2(View view) {
